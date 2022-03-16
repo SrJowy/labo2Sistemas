@@ -68,7 +68,6 @@ def princ():
                 img = res.content
             
             file = open(str(idx) + ".png", "wb")
-            print(img)
             file.write(img)
             file.close()
 
