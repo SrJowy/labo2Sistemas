@@ -1,5 +1,6 @@
 from fileinput import filename
 import os
+import sys
 from attr import NOTHING
 from bs4 import BeautifulSoup
 from pynput import keyboard
@@ -113,8 +114,11 @@ def princ(username, name):
                             listener.join()
                         downloadPDF(response.content, cookie)
                     elif body.find(name) == -1:
-                        print("Program exited with code 1")
+                        print("The name you entered isn't correct")
                         exit(1)
+        else:
+            print("The username/password are not correct")
+            exit(1)
     
 def downloadPDF(res, cookie):
     html = BeautifulSoup(res, "html.parser")
@@ -168,8 +172,6 @@ def downloadPDF(res, cookie):
                     
 
 if __name__ == "__main__":
-    #username = sys.argv[1]
-    #name = sys.argv[2]
-    username = '966786'
-    name = 'JOEL'
+    username = sys.argv[1]
+    name = sys.argv[2]
     princ(username, name)
